@@ -6,15 +6,24 @@ public class Player : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
-    public float height = 1.1f;
+    private float height = .5f;
     public int maxMultiJump;
+    private int currentJumps;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
+    public LayerMask floorLayerMask;
+    private Animator anim;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        currentJumps = maxMultiJump;
     }
 
     private void Update()
@@ -22,7 +31,14 @@ public class Player : MonoBehaviour
         Movement();
         if (Input.GetButtonDown("Jump"))
         {
-            Jump();
+            if (isGrounded())
+            {
+                currentJumps = maxMultiJump;
+            }
+            if (currentJumps > 0)
+            {
+                Jump();
+            }
         }
     }
 
@@ -32,23 +48,34 @@ public class Player : MonoBehaviour
 
         rb.velocity = new Vector2(xMovement, rb.velocity.y);
 
-        if(rb.velocity.x > 0)
+        if (rb.velocity.x != 0)
         {
-            sprite.flipX = false;
+            anim.Play("Moving");
+        } else
+        {
+            anim.Play("Idle");
+        }
+
+        if (rb.velocity.x > 0)
+        {
+            //sprite.flipX = false;
         } else if (rb.velocity.x < 0 )
         {
-            sprite.flipX = true;
+            //sprite.flipX = true;
         }
+
     }
 
+    //Applies a new velocity regardless of players previous velocity. Avoids massive jumps.
     private void Jump()
     {
-        rb.AddForce(Vector2.up * jumpForce);
+        currentJumps--;
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
 
     bool isGrounded()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, (height / 2f) + 0.1f);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, (height / 2f) + 0.1f, floorLayerMask);
 
         return (hitInfo.collider != null);
     }
