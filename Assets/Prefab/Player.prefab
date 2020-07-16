@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4754833339595809365}
   - component: {fileID: 7722778175105092196}
-  - component: {fileID: 5341345565625952184}
+  - component: {fileID: 6663609241124408470}
   - component: {fileID: 227530710605369384}
   - component: {fileID: 7328816506495420090}
   - component: {fileID: 8307994556702729577}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5341345565625952184
+--- !u!114 &6663609241124408470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,15 +94,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6384977642911610892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 634ba332ac8fd5a4c9ba3bd520f6a3fb, type: 3}
+  m_Script: {fileID: 11500000, guid: a6fbf87790b269445977ea81802683ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
   jumpForce: 3
-  maxMultiJump: 1
+  maxMultiJump: 2
   floorLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!50 &227530710605369384
 Rigidbody2D:
   serializedVersion: 4
