@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sprite;
     public LayerMask floorLayerMask;
     private Animator anim;
+    private bool playingSound;
 
     private void Awake()
     {
@@ -40,6 +41,12 @@ public class Player : MonoBehaviour
                 Jump();
             }
         }
+
+        if (!isGrounded())
+        {
+            AudioManager.instance.Stop("Movement");
+            playingSound = false;
+        }
     }
 
     private void Movement()
@@ -51,9 +58,19 @@ public class Player : MonoBehaviour
         if (rb.velocity.x != 0)
         {
             anim.Play("Moving");
+            if(playingSound == false)
+            {
+                AudioManager.instance.Play("Movement");
+                playingSound = true;
+            }
         } else
         {
             anim.Play("Idle");
+            if(playingSound == true)
+            {
+                AudioManager.instance.Stop("Movement");
+                playingSound = false;
+            }
         }
 
         if (rb.velocity.x > 0)
