@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sprite;
     public LayerMask floorLayerMask;
     private Animator anim;
-    private bool playingSound;
+    private bool landedSound;
 
     private void Awake()
     {
@@ -38,15 +38,11 @@ public class Player : MonoBehaviour
             }
             if (currentJumps > 0)
             {
+                AudioManager.instance.Play("Jump");
                 Jump();
             }
         }
-
-        if (!isGrounded())
-        {
-            AudioManager.instance.Stop("Movement");
-            playingSound = false;
-        }
+        LandingSound();
     }
 
     private void Movement()
@@ -55,32 +51,13 @@ public class Player : MonoBehaviour
 
         rb.velocity = new Vector2(xMovement, rb.velocity.y);
 
-        if (rb.velocity.x != 0)
+        if (rb.velocity.x > 1f || -1f > rb.velocity.x)
         {
             anim.Play("Moving");
-            if(playingSound == false)
-            {
-                AudioManager.instance.Play("Movement");
-                playingSound = true;
-            }
         } else
         {
             anim.Play("Idle");
-            if(playingSound == true)
-            {
-                AudioManager.instance.Stop("Movement");
-                playingSound = false;
-            }
         }
-
-        if (rb.velocity.x > 0)
-        {
-            //sprite.flipX = false;
-        } else if (rb.velocity.x < 0 )
-        {
-            //sprite.flipX = true;
-        }
-
     }
 
     //Applies a new velocity regardless of players previous velocity. Avoids massive jumps.
@@ -93,8 +70,21 @@ public class Player : MonoBehaviour
     bool isGrounded()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, (height / 2f) + 0.1f, floorLayerMask);
-
         return (hitInfo.collider != null);
+    }
+
+    private void LandingSound()
+    {
+        //Only creates a landing sound once on impact, then resets afterward.
+        if (isGrounded() && landedSound == false)
+        {
+            AudioManager.instance.Play("Land");
+            landedSound = true;
+        }
+        if (!isGrounded())
+        {
+            landedSound = false;
+        }
     }
 
 }
