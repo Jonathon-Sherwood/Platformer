@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        if(GameManager.instance != null)
+        {
+            GameManager.instance.player = this.gameObject;
+        }
         currentJumps = maxMultiJump;
     }
 
@@ -65,7 +69,7 @@ public class Player : MonoBehaviour
         if(collision.transform.tag == "Collectable")
         {
             Destroy(collision.gameObject);
-            GameManager.Instance.currentCollectables++;
+            GameManager.instance.currentCollectables++;
         }
     }
 

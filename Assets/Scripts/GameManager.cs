@@ -2,20 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public string gameState = "Start Screen";
 
-    //Sets the game manager as a static instance that cannot be edited.
-    private static GameManager instance;
-    public static GameManager Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
+
+    public static GameManager instance; //Sets the game manager as a static instance
+    public int currentSceneIndex = 0; //Holds the value of the current scene.
     [HideInInspector] public GameObject player; //Allows the designer to assign the player object in inspector.
     [HideInInspector] public Player playerController; //Detects player controller for editing.
     public GameObject playerPrefab; //Allows the player to be respawned from the prefab list.
@@ -36,6 +31,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector]public int maxCollectables; //Used for declaring when the game is complete.
     private int currentLives; //Placeholder for the lives the player has after dying.
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     //Sets the game manager to a singleton.
     private void Awake()
     {
@@ -50,6 +50,34 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         currentLives = playerLives;
+    }
+
+
+    public void LoadLevel(int levelIndex)
+    {
+        SceneManager.LoadScene(levelIndex);
+    }
+
+    public void LoadLevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
+    }
+
+
+    /// <summary>
+    /// This method is called every time a scene finishes loading.
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <param name="mode"></param>
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Scene finished loading.");
+        currentSceneIndex = scene.buildIndex;
+    }
+
+    public void LoadNextScene()
+    {
+        LoadLevel(currentSceneIndex + 1);
     }
 
     public void Update()
