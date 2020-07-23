@@ -267,6 +267,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &463990015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6384977642911610892, guid: d66a1f0092820604183bf10ab4a24fe1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8745855218836413557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &463990016
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463990015}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0010538474, y: 0.004215181}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.5, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.15225206, y: 0.11220801}
+  m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +589,7 @@ GameObject:
   - component: {fileID: 1435599211}
   - component: {fileID: 1435599210}
   - component: {fileID: 1435599209}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -878,7 +910,7 @@ GameObject:
   - component: {fileID: 1739853171}
   - component: {fileID: 1739853170}
   - component: {fileID: 1739853169}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +1000,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0025605112, y: 0.00075545907}
+  m_Offset: {x: -0.0025605112, y: 0.002348002}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -979,7 +1011,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.13659543, y: 0.1280716}
+  m_Size: {x: 0.13659543, y: 0.1312567}
   m_EdgeRadius: 0
 --- !u!4 &1739853172
 Transform:
@@ -1143,12 +1175,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< HEAD
     - target: {fileID: 1832274247715984612, guid: 5840a128cd526a24ba49b3a330bdaf4a,
         type: 3}
       propertyPath: m_Name
       value: Collectable Spawn Points
       objectReference: {fileID: 0}
     - target: {fileID: 1832274247715984613, guid: 5840a128cd526a24ba49b3a330bdaf4a,
+=======
+    - target: {fileID: 2893517104802486825, guid: d66a1f0092820604183bf10ab4a24fe1,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.036309753
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893517104802486825, guid: d66a1f0092820604183bf10ab4a24fe1,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.12525034
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754833339595809365, guid: d66a1f0092820604183bf10ab4a24fe1,
+>>>>>>> parent of 7790cf0... Double Jump/Animations
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.043536436
@@ -1274,13 +1320,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4089596258935260064, guid: 59f9764b6cb1bc94982b5d718be70631,
         type: 3}
+<<<<<<< HEAD
       propertyPath: m_AnchoredPosition.x
       value: 0
+=======
+      propertyPath: jumpForce
+      value: 150
+>>>>>>> parent of 7790cf0... Double Jump/Animations
       objectReference: {fileID: 0}
     - target: {fileID: 4089596258935260064, guid: 59f9764b6cb1bc94982b5d718be70631,
         type: 3}
+<<<<<<< HEAD
       propertyPath: m_AnchoredPosition.y
       value: 0
+=======
+      propertyPath: maxMultiJump
+      value: 2
+>>>>>>> parent of 7790cf0... Double Jump/Animations
       objectReference: {fileID: 0}
     - target: {fileID: 4089596258935260064, guid: 59f9764b6cb1bc94982b5d718be70631,
         type: 3}
@@ -1473,6 +1529,7 @@ PrefabInstance:
       objectReference: {fileID: 1789024784}
     - target: {fileID: 4948749622698933731, guid: 6f2ca9ae4dd731942a6a2ee671925267,
         type: 3}
+<<<<<<< HEAD
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
@@ -1514,17 +1571,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
+=======
+      propertyPath: m_Size.x
+      value: 0.5
+>>>>>>> parent of 7790cf0... Double Jump/Animations
       objectReference: {fileID: 0}
     - target: {fileID: 8450194959999732426, guid: 430834c35fbd8ff4d8dca7bb36757aa7,
         type: 3}
+<<<<<<< HEAD
       propertyPath: m_LocalRotation.z
       value: 0
+=======
+      propertyPath: m_Size.y
+      value: 0.5
+>>>>>>> parent of 7790cf0... Double Jump/Animations
       objectReference: {fileID: 0}
     - target: {fileID: 8450194959999732426, guid: 430834c35fbd8ff4d8dca7bb36757aa7,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 8450194959999732426, guid: 430834c35fbd8ff4d8dca7bb36757aa7,
         type: 3}
       propertyPath: m_RootOrder
@@ -1547,3 +1614,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 430834c35fbd8ff4d8dca7bb36757aa7, type: 3}
+=======
+    m_RemovedComponents:
+    - {fileID: 2893517104802486825, guid: d66a1f0092820604183bf10ab4a24fe1, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: d66a1f0092820604183bf10ab4a24fe1, type: 3}
+>>>>>>> parent of 7790cf0... Double Jump/Animations
