@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance; //Allows all scripts to call this.
     public int currentSceneIndex = 0; //Holds the number for whichever scene we are on.
+    public Player player;
+
 
     private void OnEnable()
     {
@@ -22,14 +24,16 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         } else
         {
-            Debug.LogError("Gamemanager attempted to create second instance.");
             Destroy(this.gameObject);
         }
     }
 
-    private void Start()
+    private void Update()
     {
-        
+        if (player == null && (currentSceneIndex != (4) && currentSceneIndex != (0)))
+        {
+            LoadLevel(4);
+        }
     }
 
     public void LoadLevel (int levelIndex)
@@ -51,6 +55,11 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Scene finished loading");
         currentSceneIndex = scene.buildIndex;
+    }
+
+    private void PlayerDeath()
+    {
+
     }
 
     public void LoadNextScene()

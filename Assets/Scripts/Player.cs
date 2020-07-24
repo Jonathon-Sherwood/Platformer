@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
-    private float height = .5f;
+    private float height = .2f;
     public int maxMultiJump;
     private int currentJumps;
     private Rigidbody2D rb;
@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        GameManager.instance.player = this;
     }
 
     private void Start()
