@@ -35,12 +35,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.instance.Play("Music");
+        AudioManager.instance.Play("Music"); //Starts playing music on start.
     }
 
     private void Update()
     {
-        //Switches to the lose screen on player death.
+        //Switches to the lose screen on player death 4 times, otherwise respawns player.
         if (player == null && (currentSceneIndex != (4) && currentSceneIndex != (0) && currentSceneIndex != (3)) && playerLives < 0)
         {
             LoadLevel(4);
@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         currentSceneIndex = scene.buildIndex;
+
+        //Replaces the player on the spawn point in the scene if the player has lives.
         spawnPoint = GameObject.Find("SpawnPoint");
         if (spawnPoint != null && playerLives >= 0)
         {
@@ -82,7 +84,7 @@ public class GameManager : MonoBehaviour
 
         if(currentSceneIndex == 1)
         {
-            AudioManager.instance.Play("Music");
+            AudioManager.instance.Play("Music"); //Starts music after lose screen.
         }
     }
 

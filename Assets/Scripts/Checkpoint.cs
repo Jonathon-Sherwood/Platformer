@@ -8,6 +8,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Sets a new spawn point in the game manager when the player reaches the checkpoint.
         if (collision.CompareTag("Player"))
         {
             flag.SetActive(true);

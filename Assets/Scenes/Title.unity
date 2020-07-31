@@ -789,6 +789,22 @@ MonoBehaviour:
     loop: 0
     mute: 0
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 6698ad55fb2b5e145b5224749d1297ec, type: 3}
+    name: Choir
+    volume: 1
+    pitch: 1.21
+    time: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 0d37215da429d414b94934dd2a496e6d, type: 3}
+    name: Whoosh
+    volume: 1
+    pitch: 1
+    time: 0.63
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
 --- !u!4 &1184539102
 Transform:
   m_ObjectHideFlags: 0

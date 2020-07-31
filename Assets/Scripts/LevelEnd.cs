@@ -9,6 +9,7 @@ public class LevelEnd : MonoBehaviour
         //Ends the level when the player reaches the destination.
         if (collision.gameObject.CompareTag("Player"))
         {
+            GameManager.instance.playerLives++;
             GameManager.instance.LoadNextScene();
         }
     }
