@@ -7,7 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance; //Allows all scripts to call this.
     public int currentSceneIndex = 0; //Holds the number for whichever scene we are on.
-    public Player player;
+    public Player player; //Allows the gamemanager to hold onto the player within the scene.
+    public GameObject spawnPoint; //Allows the gamemanager to spawnt he player in a defined location.
+    public GameObject playerPrefab; //Sets a prefab that can be instantiated in the level.
+    [HideInInspector] public int playerLives; //Holds onto the value of the players current lives;
+    public int MaxPlayerLives; //Allows the designer to choose how many times the player can die.
 
 
     private void OnEnable()
@@ -26,13 +30,28 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        playerLives = MaxPlayerLives;
+    }
+
+    private void Start()
+    {
+        AudioManager.instance.Play("Music");
     }
 
     private void Update()
     {
-        if (player == null && (currentSceneIndex != (4) && currentSceneIndex != (0)))
+        //Switches to the lose screen on player death.
+        if (player == null && (currentSceneIndex != (4) && currentSceneIndex != (0) && currentSceneIndex != (3)) && playerLives < 0)
         {
             LoadLevel(4);
+            AudioManager.instance.Play("Die");
+            AudioManager.instance.Stop("Music");
+            AudioManager.instance.Play("Lose");
+        } else if (player == null && (currentSceneIndex != (4) && currentSceneIndex != (0) && currentSceneIndex != (3)) && playerLives >= 0)
+        {
+            AudioManager.instance.Play("Die");
+            Instantiate(playerPrefab, spawnPoint.transform);
+            playerLives--;
         }
     }
 
@@ -53,13 +72,18 @@ public class GameManager : MonoBehaviour
     /// <param name="mode"></param>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Scene finished loading");
         currentSceneIndex = scene.buildIndex;
-    }
+        spawnPoint = GameObject.Find("SpawnPoint");
+        if (spawnPoint != null && playerLives >= 0)
+        {
+            Instantiate(playerPrefab, spawnPoint.transform);
+            playerLives--;
+        }
 
-    private void PlayerDeath()
-    {
-
+        if(currentSceneIndex == 1)
+        {
+            AudioManager.instance.Play("Music");
+        }
     }
 
     public void LoadNextScene()

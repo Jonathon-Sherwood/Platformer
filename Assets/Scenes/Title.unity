@@ -549,6 +549,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSceneIndex: 0
+  player: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  playerPrefab: {fileID: 6384977642911610892, guid: d66a1f0092820604183bf10ab4a24fe1,
+    type: 3}
+  playerLives: 3
+  MaxPlayerLives: 2
 --- !u!1 &823621025
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.674681, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.6698113, b: 0.08383852, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -748,6 +754,38 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     time: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 45f9383046a80894782e18d824e4b736, type: 3}
+    name: Checkpoint
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 644c5136d2ef4c84c86e01b437f4d6b0, type: 3}
+    name: Music
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    mute: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 44ec57d64227fa0448ec08e94c247c3d, type: 3}
+    name: Die
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5dc657e6723dc034a98dbc0b9e601662, type: 3}
+    name: Lose
+    volume: 1
+    pitch: 1
+    time: 0.6
     loop: 0
     mute: 0
     source: {fileID: 0}
