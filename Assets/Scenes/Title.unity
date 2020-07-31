@@ -771,7 +771,7 @@ MonoBehaviour:
     pitch: 1
     time: 0
     loop: 0
-    mute: 1
+    mute: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 44ec57d64227fa0448ec08e94c247c3d, type: 3}
     name: Die
@@ -887,7 +887,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Platformer Game
+  m_Text: Slime Time
 --- !u!222 &1188952216
 CanvasRenderer:
   m_ObjectHideFlags: 0
